@@ -65,7 +65,6 @@
   >
 
   <img
-    src="images/hero4.png"
     alt="sunabacoffeeの外観"
     class="hero-image"
   >
@@ -137,7 +136,7 @@
         <div class="menu-grid">
 
           <!-- COFFEE -->
-          <article class="menu-card">
+          <article class="menu-card menu-card--clickable" data-menu-modal="drink" tabindex="0" role="button" aria-haspopup="dialog">
 
             <img
               src="images/coffee.jpg"
@@ -154,7 +153,7 @@
 
 
           <!-- SANDWICH -->
-          <article class="menu-card">
+          <article class="menu-card menu-card--clickable" data-menu-modal="food" tabindex="0" role="button" aria-haspopup="dialog">
 
             <img
               src="images/sandwich.jpg"
@@ -171,7 +170,7 @@
 
 
           <!-- CAKE -->
-          <article class="menu-card">
+          <article class="menu-card menu-card--clickable" data-menu-modal="dessert" tabindex="0" role="button" aria-haspopup="dialog">
 
             <img
               src="images/cake.jpg"
@@ -191,6 +190,117 @@
       </div>
 
     </section>
+
+
+    <dialog class="menu-modal" id="drink-menu-modal" aria-labelledby="drink-menu-title">
+
+      <div class="menu-modal-inner">
+
+        <button class="modal-close" type="button" aria-label="メニューを閉じる">×</button>
+
+        <h2 id="drink-menu-title">DRINK MENU</h2>
+
+        <dl class="drink-list">
+
+          <div class="drink-row">
+            <dt>コーヒー</dt>
+            <dd>500円</dd>
+          </div>
+
+          <div class="drink-row">
+            <dt>カフェオレ</dt>
+            <dd>600円</dd>
+          </div>
+
+          <div class="drink-row">
+            <dt>ウィンナーコーヒー</dt>
+            <dd>650円</dd>
+          </div>
+
+          <div class="drink-row">
+            <dt>紅茶</dt>
+            <dd>500円</dd>
+          </div>
+
+        </dl>
+
+      </div>
+
+    </dialog>
+
+
+    <dialog class="menu-modal" id="food-menu-modal" aria-labelledby="food-menu-title">
+
+      <div class="menu-modal-inner">
+
+        <button class="modal-close" type="button" aria-label="メニューを閉じる">×</button>
+
+        <h2 id="food-menu-title">FOOD MENU</h2>
+
+        <dl class="drink-list">
+
+          <div class="drink-row">
+            <dt>サンドウィッチ</dt>
+            <dd>800円</dd>
+          </div>
+
+          <div class="drink-row">
+            <dt>ナポリタン</dt>
+            <dd>900円</dd>
+          </div>
+
+          <div class="drink-row">
+            <dt>ミートソース</dt>
+            <dd>1000円</dd>
+          </div>
+
+          <div class="drink-row">
+            <dt>グラタン</dt>
+            <dd>1100円</dd>
+          </div>
+
+        </dl>
+
+      </div>
+
+    </dialog>
+
+
+    <dialog class="menu-modal" id="dessert-menu-modal" aria-labelledby="dessert-menu-title">
+
+      <div class="menu-modal-inner">
+
+        <button class="modal-close" type="button" aria-label="メニューを閉じる">×</button>
+
+        <h2 id="dessert-menu-title">DESSERT MENU</h2>
+
+        <dl class="drink-list">
+
+          <div class="drink-row">
+            <dt>ケーキ</dt>
+            <dd>450円</dd>
+          </div>
+
+          <div class="drink-row">
+            <dt>パンケーキ</dt>
+            <dd>700円</dd>
+          </div>
+
+          <div class="drink-row">
+            <dt>プリン</dt>
+            <dd>500円</dd>
+          </div>
+
+          <div class="drink-row">
+            <dt>アイスクリーム</dt>
+            <dd>450円</dd>
+          </div>
+
+        </dl>
+
+      </div>
+
+    </dialog>
 
 
     <!-- ==============================
@@ -427,6 +537,7 @@
 
   </footer>
 
-<script src="script.js"></script>
+  <script src="script.js"></script>
+
 </body>
 </html>

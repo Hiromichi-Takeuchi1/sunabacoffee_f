@@ -21,3 +21,37 @@ setInterval(() => {
   heroImages[currentImage].classList.add("active");
 
 }, 4000);
+
+const menuModalTriggers = document.querySelectorAll("[data-menu-modal]");
+
+menuModalTriggers.forEach((trigger) => {
+  const modal = document.getElementById(`${trigger.dataset.menuModal}-menu-modal`);
+
+  if (!modal) {
+    return;
+  }
+
+  const openModal = () => {
+    if (!modal.open) {
+      modal.showModal();
+    }
+  };
+
+  trigger.addEventListener("click", openModal);
+  trigger.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openModal();
+    }
+  });
+
+  modal.querySelector(".modal-close").addEventListener("click", () => {
+    modal.close();
+  });
+
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      modal.close();
+    }
+  });
+});

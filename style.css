@@ -277,6 +277,15 @@ ul {
   text-align: center;
 }
 
+.menu-card--clickable {
+  cursor: pointer;
+}
+
+.menu-card--clickable:focus-visible {
+  outline: 2px solid #8c513a;
+  outline-offset: 6px;
+}
+
 .menu-card img {
   aspect-ratio: 4 / 3;
 
@@ -293,6 +302,75 @@ ul {
 
 .menu-card p{
   font-size: 24px;
+}
+
+.menu-modal {
+  width: min(500px, calc(100% - 32px));
+  margin: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #33261f;
+}
+
+.menu-modal::backdrop {
+  background: rgba(0, 0, 0, 0.58);
+}
+
+.menu-modal-inner {
+  position: relative;
+  padding: 48px clamp(24px, 6vw, 56px) 42px;
+  border: 1px solid #e8e1d8;
+  background: #fffdf8;
+  box-shadow: 0 18px 50px rgba(51, 38, 31, 0.2);
+}
+
+.menu-modal h2 {
+  margin-bottom: 28px;
+  font-family: Georgia, serif;
+  font-size: clamp(28px, 5vw, 38px);
+  line-height: 1.2;
+  text-align: center;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  background: transparent;
+  color: #6f4938;
+  cursor: pointer;
+  font-size: 30px;
+  line-height: 1;
+}
+
+.modal-close:focus-visible {
+  outline: 2px solid #8c513a;
+  outline-offset: 2px;
+}
+
+.drink-list {
+  font-size: 18px;
+}
+
+.drink-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e1dad2;
+}
+
+.drink-row dt {
+  font-weight: bold;
+}
+
+.drink-row dd {
+  margin: 0;
+  text-align: right;
 }
 
 
