@@ -26,6 +26,23 @@ const menuModalTriggers = document.querySelectorAll("[data-menu-modal]");
 
 const informationImages = document.querySelector(".information-images");
 
+const aboutSection = document.querySelector(".about");
+
+if (aboutSection && "IntersectionObserver" in window) {
+  const aboutObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        aboutSection.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  aboutObserver.observe(aboutSection);
+} else if (aboutSection) {
+  aboutSection.classList.add("is-visible");
+}
+
 if (informationImages && "IntersectionObserver" in window) {
   const revealInformationImages = () => {
     informationImages.classList.add("is-visible");
