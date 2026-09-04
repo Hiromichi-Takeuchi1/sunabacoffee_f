@@ -24,6 +24,44 @@ setInterval(() => {
 
 const menuModalTriggers = document.querySelectorAll("[data-menu-modal]");
 
+const informationImages = document.querySelector(".information-images");
+
+if (informationImages && "IntersectionObserver" in window) {
+  const revealInformationImages = () => {
+    informationImages.classList.add("is-visible");
+
+    requestAnimationFrame(() => {
+      informationImages.querySelectorAll("img").forEach((image, index) => {
+        image.style.opacity = "1";
+        image.style.transform = "translate(0, 0)";
+
+        if (index === 1) {
+          image.style.transitionDelay = "0.2s";
+        }
+      });
+    });
+  };
+
+  const informationImagesObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        revealInformationImages();
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  informationImagesObserver.observe(informationImages);
+
+  const informationImagesBox = informationImages.getBoundingClientRect();
+
+  if (informationImagesBox.top < window.innerHeight && informationImagesBox.bottom > 0) {
+    revealInformationImages();
+  }
+} else if (informationImages) {
+  informationImages.classList.add("is-visible");
+}
+
 menuModalTriggers.forEach((trigger) => {
   const modal = document.getElementById(`${trigger.dataset.menuModal}-menu-modal`);
 
