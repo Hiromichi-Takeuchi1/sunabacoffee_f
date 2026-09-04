@@ -274,6 +274,9 @@ ul {
 }
 
 .menu-card {
+  display: flex;
+  flex-direction: column;
+
   text-align: center;
 }
 
@@ -287,21 +290,71 @@ ul {
 }
 
 .menu-card img {
+  flex: 0 0 auto;
+
+  width: 100%;
+
+  cursor: pointer;
+
   aspect-ratio: 4 / 3;
 
   object-fit: cover;
 
   margin-bottom: 18px;
+
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.menu-card--clickable:hover img {
+  transform: scale(1.025);
+
+  filter: brightness(0.92);
 }
 
 .menu-card h3 {
+  min-height: 36px;
+
   font-size: 24px;
 
   margin-bottom: 4px;
+
+  line-height: 1.5;
 }
 
-.menu-card p{
+.menu-card p {
+  min-height: 36px;
+
+  margin: 0 0 18px;
+
   font-size: 24px;
+
+  line-height: 1.5;
+}
+
+.menu-card-button {
+  min-height: 54px;
+  margin-top: auto;
+  padding: 10px 14px;
+  border: 1px solid #8c513a;
+  border-radius: 3px;
+  background: #fffaf3;
+  color: #6f4938;
+  cursor: pointer;
+  font: inherit;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 1.4;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.menu-card-button:hover {
+  background: #8c513a;
+  color: #fff;
+}
+
+.menu-card-button:focus-visible {
+  outline: 2px solid #8c513a;
+  outline-offset: 3px;
 }
 
 .menu-modal {
@@ -383,22 +436,42 @@ ul {
   background: #f9f6f0;
 }
 
+.information .two-column {
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+
+  align-items: start;
+}
+
+.information-text h2 {
+  margin-bottom: 3px;
+}
+
+.information-text .section-subtitle {
+  margin-bottom: 30px;
+}
+
 .info-list {
-  font-size: 20px;
+  margin-top: 0;
+
+  font-size: 17px;
 }
 
 .info-list > div {
   display: grid;
 
-  grid-template-columns: 100px 1fr;
+  grid-template-columns: 112px minmax(0, 1fr);
 
-  padding: 11px 0;
+  padding: 12px 0;
 
-  border-bottom: 1px solid #e1dad2;
+  border-bottom: 1px solid #e8e1d8;
 }
 
 .info-list dt {
   font-weight: bold;
+}
+
+.info-list dd {
+  margin: 0;
 }
 
 .information-images {
@@ -410,7 +483,9 @@ ul {
 }
 
 .information-images img {
-  height: 220px;
+  width: 100%;
+
+  aspect-ratio: 4 / 3;
 
   object-fit: cover;
 }
@@ -428,33 +503,49 @@ ul {
 .access-layout {
   display: grid;
 
-  grid-template-columns: 1fr 1.25fr;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
 
   gap: 70px;
 
-  align-items: center;
+  align-items: start;
+}
+
+.access-text h2 {
+  margin-bottom: 3px;
+}
+
+.access-text .section-subtitle {
+  margin-bottom: 30px;
 }
 
 .access-text h3 {
-  font-size: 24px;
+  margin: 0 0 18px;
 
-  margin-bottom: 20px;
+  font-size: 22px;
+
+  line-height: 1.4;
 }
 
 .access-list {
-  font-size: 16px;
+  font-size: 17px;
 }
 
 .access-list > div {
   display: grid;
 
-  grid-template-columns: 90px 1fr;
+  grid-template-columns: 96px minmax(0, 1fr);
 
-  padding: 5px 0;
+  padding: 10px 0;
+
+  border-bottom: 1px solid #e8e1d8;
 }
 
 .access-list dt {
   font-weight: bold;
+}
+
+.access-list dd {
+  margin: 0;
 }
 
 .access-map img {
@@ -470,6 +561,30 @@ ul {
   width: 100%;
   height: 290px;
   border: 1px solid #ddd;
+}
+
+.access-map-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 10px 18px;
+  border: 1px solid #6f4938;
+  border-radius: 3px;
+  background: #6f4938;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.access-map-link:hover {
+  background: #8c513a;
+}
+
+.access-map-link:focus-visible {
+  outline: 2px solid #8c513a;
+  outline-offset: 3px;
 }
 
 
@@ -700,13 +815,21 @@ ul {
 
   /* INFORMATION */
 
+  .information .two-column {
+    gap: 32px;
+  }
+
   .information-images img {
-    height: 190px;
+    aspect-ratio: 4 / 3;
   }
 
 
 
   /* ACCESS */
+
+  .access-layout {
+    gap: 32px;
+  }
 
   .access-map img {
     height: auto;
@@ -714,6 +837,10 @@ ul {
 
   .access-map iframe {
     height: 290px;
+  }
+
+  .access-map-link {
+    min-height: 52px;
   }
 
 
@@ -757,12 +884,11 @@ ul {
   }
 
   .information-images img {
-    height: 220px;
+    height: auto;
   }
 
   .info-list > div {
-    grid-template-columns:
-      85px 1fr;
+    grid-template-columns: 96px minmax(0, 1fr);
   }
 
   .access-list > div {
