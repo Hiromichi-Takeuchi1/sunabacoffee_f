@@ -113,8 +113,6 @@ ul {
   z-index: 1000;
 
   border-bottom: 1px solid #eee8df;
-
-  position: sticky;
 }
 
 .header-inner {
