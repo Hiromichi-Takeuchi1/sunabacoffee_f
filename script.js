@@ -1,5 +1,28 @@
 const heroImages = document.querySelectorAll(".hero-image");
 
+const menuToggle = document.querySelector(".menu-toggle");
+const headerNav = document.querySelector(".header-nav");
+
+if (menuToggle && headerNav) {
+  const closeMenu = () => {
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "メニューを開く");
+    headerNav.classList.remove("is-open");
+  };
+
+  menuToggle.addEventListener("click", () => {
+    const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+
+    menuToggle.setAttribute("aria-expanded", String(!isOpen));
+    menuToggle.setAttribute("aria-label", isOpen ? "メニューを開く" : "メニューを閉じる");
+    headerNav.classList.toggle("is-open", !isOpen);
+  });
+
+  headerNav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+}
+
 let currentImage = 0;
 
 setInterval(() => {
